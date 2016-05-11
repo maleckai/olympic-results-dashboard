@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511051114) do
+ActiveRecord::Schema.define(version: 20160511055401) do
 
   create_table "countries", force: :cascade do |t|
     t.string   "name",       null: false
@@ -23,14 +23,22 @@ ActiveRecord::Schema.define(version: 20160511051114) do
     t.integer  "score",      default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "country_id"
+    t.integer  "event_id"
   end
+
+  add_index "event_teams", ["country_id"], name: "index_event_teams_on_country_id"
+  add_index "event_teams", ["event_id"], name: "index_event_teams_on_event_id"
 
   create_table "events", force: :cascade do |t|
     t.datetime "start_at",   null: false
     t.datetime "finish_at",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "sport_id"
   end
+
+  add_index "events", ["sport_id"], name: "index_events_on_sport_id"
 
   create_table "sports", force: :cascade do |t|
     t.string   "name",       null: false
