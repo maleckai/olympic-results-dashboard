@@ -17,7 +17,7 @@ module DataHelpers
   private
 
   def a_number
-    Random.rand 10000000000
+    rand 10000000000
   end
 
   def a_time
