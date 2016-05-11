@@ -1,11 +1,6 @@
 require 'rails_helper'
-require 'securerandom'
 
 RSpec.describe Sport, type: :model do
-
-  def a_string
-    SecureRandom.hex
-  end
 
   let(:sport_name) { a_string }
   let(:sport_data) { { name: sport_name } }

@@ -1,11 +1,6 @@
 require 'rails_helper'
-require 'securerandom'
 
 RSpec.describe Country, type: :model do
-
-  def a_string
-    SecureRandom.hex
-  end
 
   let(:country_name) { a_string }
   let(:country_data) { { name: country_name } }
