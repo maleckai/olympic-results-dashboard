@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', github: "rails/rails"
 
+gem 'active_model_serializers'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server

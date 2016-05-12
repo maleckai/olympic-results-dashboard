@@ -14,6 +14,10 @@ module DataHelpers
     date + 1.day + a_number.seconds
   end
 
+  def a_number_string
+    a_number.to_s
+  end
+
   private
 
   def a_number

@@ -108,6 +108,8 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    active_model_serializers (0.9.5)
+      activemodel (>= 3.2)
     arel (7.0.0)
     builder (3.2.2)
     byebug (9.0.0)
@@ -173,6 +175,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   byebug
   listen (~> 3.0.5)
   puma (~> 3.0)
