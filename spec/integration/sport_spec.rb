@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'GET /sports/:id' do
 
-
-
   context 'with no matching sport' do
 
     let(:sport_id) { a_number min: 1, max: 100 }

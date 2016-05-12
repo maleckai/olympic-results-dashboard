@@ -61,14 +61,29 @@ module DataHelpers
     Sport.create(name: a_string)
   end
 
+  def some_past_events_for sport
+    events = a_number(min: 1, max: 5).times.map do
+      start_time = a_date_before now
+      an_event_for sport, start_time
+    end
+    events.sort_by { |event| event.start_at }
+  end
+
+  def some_upcoming_events_for sport
+    events = a_number(min: 1, max: 5).times.map do
+      start_time = a_date_after now
+      an_event_for sport, start_time
+    end
+    events.sort_by { |event| event.start_at }
+  end
+
   def some_events_for sport
     events = a_number(min: 1, max: 5).times.map { an_event_for sport }
     events.sort_by { |event| event.start_at }
   end
 
-  def an_event_for sport, country_one=a_country, country_two=a_country
-    start_time = a_date
-    finish_time = a_date_after start_time
+  def an_event_for sport, start_time=a_date, finish_time=nil, country_one=a_country, country_two=a_country
+    finish_time ||= start_time + a_random_number_of_hours
     Event.create({
       start_at: start_time,
       finish_at: finish_time,
@@ -96,6 +111,10 @@ module DataHelpers
     date + 1.day + a_unix_timestamp.seconds
   end
 
+  def a_date_before date
+    date - 1.day - a_unix_timestamp.seconds
+  end
+
   def a_number_string
     a_number.to_s
   end
@@ -112,8 +131,16 @@ module DataHelpers
     rand min..max
   end
 
+  def a_random_number_of_hours
+    (1..4).to_a.sample.hours
+  end
+
   def a_time
     Time.at(a_unix_timestamp)
+  end
+
+  def now
+    DateTime.now
   end
 
 end
