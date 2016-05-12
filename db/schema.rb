@@ -25,10 +25,9 @@ ActiveRecord::Schema.define(version: 20160511055401) do
     t.datetime "updated_at",             null: false
     t.integer  "country_id"
     t.integer  "event_id"
+    t.index ["country_id"], name: "index_event_teams_on_country_id"
+    t.index ["event_id"], name: "index_event_teams_on_event_id"
   end
-
-  add_index "event_teams", ["country_id"], name: "index_event_teams_on_country_id"
-  add_index "event_teams", ["event_id"], name: "index_event_teams_on_event_id"
 
   create_table "events", force: :cascade do |t|
     t.datetime "start_at",   null: false
@@ -36,9 +35,8 @@ ActiveRecord::Schema.define(version: 20160511055401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "sport_id"
+    t.index ["sport_id"], name: "index_events_on_sport_id"
   end
-
-  add_index "events", ["sport_id"], name: "index_events_on_sport_id"
 
   create_table "sports", force: :cascade do |t|
     t.string   "name",       null: false

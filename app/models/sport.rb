@@ -1,4 +1,4 @@
-class Sport < ActiveRecord::Base
+class Sport < ApplicationRecord
   has_many :events
 
   validates :name, presence: true
