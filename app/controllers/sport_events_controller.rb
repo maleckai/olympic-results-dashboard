@@ -1,6 +1,6 @@
 class SportEventsController < ApplicationController
 
-  # GET /sports/:id/events
+  # GET /sports/:sport_id/events
   def index
     render json: all_events_for_sport, meta_key: :links, links: index_links
   end
